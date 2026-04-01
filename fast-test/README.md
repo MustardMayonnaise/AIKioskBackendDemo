@@ -65,10 +65,9 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 curl http://localhost:8000/
 # 응답: {"Hello": "World"}
 ```
+---
 
-### GET /tts
-
-# 현재 오류가 있습니다.
+### GET /tts $${\color{red}(현재\space오류가\space있습니다.)}$$
 
 텍스트를 음성으로 변환합니다.
 
@@ -82,6 +81,8 @@ curl "http://localhost:8000/tts?text=안녕하세요" --output output.wav
 **응답:**
 - Content-Type: `audio/wav`
 - 바이너리 오디오 데이터
+
+---
 
 ### POST /stt
 
@@ -100,6 +101,8 @@ curl -X POST -F "audio_file=@audio.webm" http://localhost:8000/stt
 
 **응답:**
 - `{"text": "인식된 텍스트"}`
+
+---
 
 ## 파일 구조
 
