@@ -1,0 +1,23 @@
+2026-04-01 22:51:30 | INFO | root | Initializing services...
+2026-04-01 22:51:31 | INFO | root | Initializing TTSService...
+2026-04-01 22:51:32 | INFO | root | Initializing services...
+2026-04-01 22:51:32 | INFO | root | Initializing TTSService...
+2026-04-01 22:51:32 | INFO | root | CUDA is available. Using GPU for TTS.
+2026-04-01 22:51:33 | INFO | root | CUDA is available. Using GPU for TTS.
+2026-04-01 22:51:34 | INFO | root | TTSService initialized with device: cuda, sample_rate: 44100, speaker_ids: {'KR': 0}
+2026-04-01 22:51:34 | INFO | root | TTSService initialized with device: cuda, sample_rate: 44100, speaker_ids: {'KR': 0}
+2026-04-01 22:51:36 | INFO | root | Services initialized successfully.
+2026-04-01 22:51:36 | INFO | root | Services initialized successfully.
+2026-04-01 22:51:46 | INFO | root | Received TTS request with text: 안녕하세요. 맥도날드입니다. 무엇을 도와드릴까요?
+2026-04-01 22:51:46 | INFO | root | Converting text to speech: 안녕하세요. 맥도날드입니다. 무엇을 도와드릴까요?
+2026-04-01 22:51:51 | INFO | root | Text to speech conversion completed.
+2026-04-01 22:52:06 | INFO | root | Received STT request.
+2026-04-01 22:52:06 | INFO | faster_whisper | Processing audio with duration 00:02.280
+2026-04-01 22:52:07 | INFO | faster_whisper | Detected language 'ko' with probability 0.97
+2026-04-01 22:52:07 | INFO | root | Speech to text conversion completed. Extracted text: 이상한 소리를 하고 있어
+2026-04-01 22:52:21 | INFO | root | Received TTS request with text: 안녕하세요. 맥도날드입니다. 무엇을 도와드릴까요?
+2026-04-01 22:52:21 | INFO | root | Converting text to speech: 안녕하세요. 맥도날드입니다. 무엇을 도와드릴까요?
+2026-04-01 22:52:22 | INFO | root | Text to speech conversion completed.
+2026-04-01 22:52:34 | INFO | root | Received TTS request with text: 다른 텍스트를 출력하는데 얼마나 걸리죠?
+2026-04-01 22:52:34 | INFO | root | Converting text to speech: 다른 텍스트를 출력하는데 얼마나 걸리죠?
+2026-04-01 22:52:35 | INFO | root | Text to speech conversion completed.
