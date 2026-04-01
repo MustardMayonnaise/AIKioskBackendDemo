@@ -19,6 +19,10 @@ npx serve -l 5500
 
 설명: fastapi를 활용한 stt/tts 구성 예제입니다. 코드가 아직 정상적으로 동작하지 않으며, ai kiosk 백엔드로 확장할 수 있습니다.
 
+환경:
+- python 3.11.20
+- cuda 13.1
+
 ```
 
 pip install fastapi uvicorn
