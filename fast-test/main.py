@@ -7,6 +7,7 @@ import os
 import tempfile
 import uvicorn
 import logging
+import time
 
 setup_logging()
 
@@ -36,9 +37,22 @@ def read_root():
 
 @app.get("/tts")
 def get_tts(text: str):
-    logging.info(f"Received TTS request with text: {text}")
-    audio_data = tts_service.text_to_speech(text)
-    return Response(content=audio_data, media_type="audio/wav")
+    request_start = time.perf_counter()
+    logging.info("Received TTS request (chars=%d)", len(text))
+
+    try:
+        audio_data = tts_service.text_to_speech(text)
+        audio_ready_ms = (time.perf_counter() - request_start) * 1000
+        logging.info("TTS audio generated in %.2f ms (bytes=%d)", audio_ready_ms, len(audio_data))
+
+        response = Response(content=audio_data, media_type="audio/wav")
+        response_ready_ms = (time.perf_counter() - request_start) * 1000
+        logging.info("TTS response prepared in %.2f ms", response_ready_ms)
+        return response
+    except Exception:
+        elapsed_ms = (time.perf_counter() - request_start) * 1000
+        logging.exception("TTS request failed after %.2f ms (chars=%d)", elapsed_ms, len(text))
+        raise
 
 @app.post("/stt")
 def post_stt(audio_file: UploadFile):

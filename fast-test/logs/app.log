@@ -21,3 +21,28 @@
 2026-04-01 22:52:34 | INFO | root | Received TTS request with text: 다른 텍스트를 출력하는데 얼마나 걸리죠?
 2026-04-01 22:52:34 | INFO | root | Converting text to speech: 다른 텍스트를 출력하는데 얼마나 걸리죠?
 2026-04-01 22:52:35 | INFO | root | Text to speech conversion completed.
+2026-04-01 22:56:29 | INFO | root | Initializing services...
+2026-04-01 22:56:29 | INFO | root | Initializing TTSService...
+2026-04-01 22:56:32 | INFO | root | CUDA is available. Using GPU for TTS.
+2026-04-01 22:56:33 | INFO | root | TTSService initialized with device: cuda, sample_rate: 44100, speaker_ids: {'KR': 0}
+2026-04-01 22:56:35 | INFO | root | Services initialized successfully.
+2026-04-01 22:56:48 | INFO | root | Received TTS request (chars=27)
+2026-04-01 22:56:48 | INFO | root | Converting text to speech: 안녕하세요. 맥도날드입니다. 무엇을 도와드릴까요?
+2026-04-01 22:56:53 | INFO | root | Text to speech conversion completed.
+2026-04-01 22:56:53 | INFO | root | TTS audio generated in 4745.08 ms (bytes=405284)
+2026-04-01 22:56:53 | INFO | root | TTS response prepared in 4745.68 ms
+2026-04-01 22:57:06 | INFO | root | Received TTS request (chars=22)
+2026-04-01 22:57:06 | INFO | root | Converting text to speech: 이렇게 다른 걸 출력하면 더 짧아지나요?
+2026-04-01 22:57:07 | INFO | root | Text to speech conversion completed.
+2026-04-01 22:57:07 | INFO | root | TTS audio generated in 848.10 ms (bytes=244648)
+2026-04-01 22:57:07 | INFO | root | TTS response prepared in 848.50 ms
+2026-04-01 22:57:39 | INFO | root | Received TTS request (chars=22)
+2026-04-01 22:57:39 | INFO | root | Converting text to speech: STT를 처음에 캐시하는데 오래걸리나봐.
+2026-04-01 22:57:40 | INFO | root | Text to speech conversion completed.
+2026-04-01 22:57:40 | INFO | root | TTS audio generated in 523.28 ms (bytes=224168)
+2026-04-01 22:57:40 | INFO | root | TTS response prepared in 523.72 ms
+2026-04-01 22:57:51 | INFO | root | Received TTS request (chars=27)
+2026-04-01 22:57:51 | INFO | root | Converting text to speech: 안녕하세요. 맥도날드입니다. 무엇을 도와드릴까요?
+2026-04-01 22:57:52 | INFO | root | Text to speech conversion completed.
+2026-04-01 22:57:52 | INFO | root | TTS audio generated in 651.21 ms (bytes=399140)
+2026-04-01 22:57:52 | INFO | root | TTS response prepared in 651.65 ms
