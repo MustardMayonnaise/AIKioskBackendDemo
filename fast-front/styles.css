@@ -1,0 +1,194 @@
+:root {
+  --bg: #f5f1e9;
+  --ink: #1f1f1f;
+  --muted: #6a655d;
+  --panel: rgba(255, 255, 255, 0.72);
+  --line: rgba(31, 31, 31, 0.14);
+  --accent: #0e7c66;
+  --accent-ink: #063e34;
+  --danger: #c84444;
+  --radius: 18px;
+  --shadow: 0 12px 36px rgba(17, 18, 20, 0.11);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(1300px 500px at -10% 10%, #f8dcbf 0%, transparent 60%),
+    radial-gradient(1200px 700px at 110% -20%, #c8e4d8 0%, transparent 65%),
+    linear-gradient(135deg, #f8f5ef 0%, #efe8dc 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.ambient {
+  position: fixed;
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(70px);
+  opacity: 0.45;
+}
+
+.ambient-one {
+  width: 260px;
+  height: 260px;
+  background: #f3b77c;
+  top: -70px;
+  left: -40px;
+}
+
+.ambient-two {
+  width: 280px;
+  height: 280px;
+  background: #89c5ae;
+  right: -70px;
+  bottom: -80px;
+}
+
+.app {
+  width: min(980px, 100% - 2rem);
+  margin: 2rem auto;
+  display: grid;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(7px);
+  padding: 1rem;
+}
+
+h1,
+h2 {
+  font-family: "Space Grotesk", sans-serif;
+  margin: 0 0 0.7rem;
+}
+
+p {
+  margin: 0.2rem 0 0.7rem;
+  color: var(--muted);
+}
+
+.row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+}
+
+label {
+  font-weight: 600;
+}
+
+input[type="text"],
+textarea,
+input[type="file"] {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.65rem 0.8rem;
+  font: inherit;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.api-row input {
+  flex: 1;
+  min-width: 220px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  border: 0;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.65rem 0.95rem;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.07);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+#stopRecordButton {
+  background: var(--danger);
+}
+
+audio {
+  width: 100%;
+  margin-bottom: 0.9rem;
+}
+
+.hint {
+  font-size: 0.92rem;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: rise 0.5s ease forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.08s;
+}
+
+.delay-2 {
+  animation-delay: 0.16s;
+}
+
+.delay-3 {
+  animation-delay: 0.24s;
+}
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 720px) {
+  .app {
+    width: min(980px, 100% - 1rem);
+    margin: 1rem auto;
+  }
+
+  .card {
+    padding: 0.85rem;
+  }
+
+  .controls button {
+    flex: 1;
+  }
+}
