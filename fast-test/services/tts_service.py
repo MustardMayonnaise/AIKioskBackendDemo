@@ -26,12 +26,8 @@ class TTSService:
 
     def text_to_speech(self, text: str) -> bytes:
         speaker_id = self.speaker_ids.get("KR", next(iter(self.speaker_ids.values())))
-        synthesize_fn: Any = getattr(self.tts, "synthesize")
-
-        try:
-            audio_data = synthesize_fn(text, speaker_id=speaker_id, speed=1.5)
-        except TypeError:
-            audio_data = synthesize_fn(text, speaker_ids=["KR"], speed=1.5)
+        tts_to_file_fn: Any = getattr(self.tts, "tts_to_file")
+        audio_data = tts_to_file_fn(text, speaker_id=speaker_id, output_path=None, speed=1.5, quiet=True)
 
         if isinstance(audio_data, tuple):
             audio_data = audio_data[0]
