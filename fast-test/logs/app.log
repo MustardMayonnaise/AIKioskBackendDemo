@@ -46,3 +46,255 @@
 2026-04-01 22:57:52 | INFO | root | Text to speech conversion completed.
 2026-04-01 22:57:52 | INFO | root | TTS audio generated in 651.21 ms (bytes=399140)
 2026-04-01 22:57:52 | INFO | root | TTS response prepared in 651.65 ms
+2026-04-05 21:32:02 | INFO | root | Initializing services...
+2026-04-05 21:32:02 | INFO | root | Initializing TTSService...
+2026-04-05 21:32:02 | INFO | root | CUDA is available. Using GPU for TTS.
+2026-04-05 21:32:02 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-Korean/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 21:32:02 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/myshell-ai/MeloTTS-Korean/0207e5adfc90129a51b6b03d89be6d84360ed323/config.json "HTTP/1.1 200 OK"
+2026-04-05 21:32:03 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-Korean/resolve/main/checkpoint.pth "HTTP/1.1 302 Found"
+2026-04-05 21:32:04 | INFO | root | TTSService initialized with device: cuda, sample_rate: 44100, speaker_ids: {'KR': 0}
+2026-04-05 21:32:04 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-medium/revision/main "HTTP/1.1 200 OK"
+2026-04-05 21:32:06 | INFO | root | Services initialized successfully.
+2026-04-05 21:34:05 | INFO | root | Received STT request.
+2026-04-05 21:34:05 | INFO | faster_whisper | Processing audio with duration 00:02.460
+2026-04-05 21:34:06 | INFO | faster_whisper | Detected language 'ko' with probability 0.98
+2026-04-05 21:34:07 | INFO | root | Speech to text conversion completed. Extracted text: 이게 무슨 냄새야?
+2026-04-05 21:34:13 | INFO | root | Received TTS request (chars=10)
+2026-04-05 21:34:13 | INFO | root | Converting text to speech: 이게 무슨 냄새야?
+2026-04-05 21:34:14 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-04-05 21:34:14 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-05 21:34:15 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 21:34:15 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-05 21:34:15 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 21:34:15 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-05 21:34:16 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 21:34:16 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/config.json "HTTP/1.1 200 OK"
+2026-04-05 21:34:16 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 21:34:16 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-05 21:34:16 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-05 21:34:16 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-05 21:34:17 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 21:34:17 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-04-05 21:34:17 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 21:34:17 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-05 21:34:17 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-05 21:34:17 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-05 21:34:17 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 21:34:17 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/config.json "HTTP/1.1 200 OK"
+2026-04-05 21:34:19 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-04-05 21:34:19 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-04-05 21:34:19 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-04-05 21:34:19 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base "HTTP/1.1 200 OK"
+2026-04-05 21:34:20 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/commits/main "HTTP/1.1 200 OK"
+2026-04-05 21:34:20 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/discussions?p=0 "HTTP/1.1 200 OK"
+2026-04-05 21:34:20 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 21:34:20 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/config.json "HTTP/1.1 200 OK"
+2026-04-05 21:34:20 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/commits/refs%2Fpr%2F1 "HTTP/1.1 200 OK"
+2026-04-05 21:34:20 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/refs%2Fpr%2F1/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-04-05 21:34:20 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 21:34:20 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-05 21:34:20 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/refs%2Fpr%2F1/model.safetensors "HTTP/1.1 302 Found"
+2026-04-05 21:34:20 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-05 21:34:21 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-05 21:34:21 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/xet-read-token/280b7b79f6f9a6eaf02d0d3ccf7874ae6a6bc816 "HTTP/1.1 200 OK"
+2026-04-05 21:34:21 | INFO | root | Text to speech conversion completed.
+2026-04-05 21:34:21 | INFO | root | TTS audio generated in 8640.00 ms (bytes=147368)
+2026-04-05 21:34:21 | INFO | root | TTS response prepared in 8640.39 ms
+2026-04-05 21:34:34 | INFO | root | Received TTS request (chars=16)
+2026-04-05 21:34:34 | INFO | root | Converting text to speech: 꺄아악!, 이게 무슨 냄새야?
+2026-04-05 21:34:35 | INFO | root | Text to speech conversion completed.
+2026-04-05 21:34:35 | INFO | root | TTS audio generated in 543.37 ms (bytes=211880)
+2026-04-05 21:34:35 | INFO | root | TTS response prepared in 543.81 ms
+2026-04-05 21:34:38 | INFO | root | Received TTS request (chars=15)
+2026-04-05 21:34:38 | INFO | root | Converting text to speech: 꺄아악! 이게 무슨 냄새야?
+2026-04-05 21:34:39 | INFO | root | Text to speech conversion completed.
+2026-04-05 21:34:39 | INFO | root | TTS audio generated in 525.96 ms (bytes=231336)
+2026-04-05 21:34:39 | INFO | root | TTS response prepared in 526.46 ms
+2026-04-05 21:34:47 | INFO | root | Received TTS request (chars=18)
+2026-04-05 21:34:47 | INFO | root | Converting text to speech: 끼야아악!!! 이게 무슨 냄새야?
+2026-04-05 21:34:47 | INFO | root | Text to speech conversion completed.
+2026-04-05 21:34:47 | INFO | root | TTS audio generated in 451.71 ms (bytes=233384)
+2026-04-05 21:34:47 | INFO | root | TTS response prepared in 452.14 ms
+2026-04-05 21:34:55 | INFO | root | Received STT request.
+2026-04-05 21:34:56 | INFO | faster_whisper | Processing audio with duration 00:01.860
+2026-04-05 21:34:56 | INFO | faster_whisper | Detected language 'en' with probability 0.45
+2026-04-05 21:34:57 | INFO | root | Speech to text conversion completed. Extracted text: Hooray!
+2026-04-05 21:36:39 | INFO | root | Received STT request.
+2026-04-05 21:36:40 | INFO | faster_whisper | Processing audio with duration 00:02.820
+2026-04-05 21:36:40 | INFO | faster_whisper | Detected language 'ko' with probability 0.91
+2026-04-05 21:36:40 | INFO | root | Speech to text conversion completed. Extracted text: 이게 무슨 냄새야?
+2026-04-05 22:35:15 | INFO | root | Initializing services...
+2026-04-05 22:35:15 | INFO | root | Initializing TTSService...
+2026-04-05 22:35:15 | INFO | root | CUDA is available. Using GPU for TTS.
+2026-04-05 22:35:15 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-Korean/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:35:15 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/myshell-ai/MeloTTS-Korean/0207e5adfc90129a51b6b03d89be6d84360ed323/config.json "HTTP/1.1 200 OK"
+2026-04-05 22:35:16 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-Korean/resolve/main/checkpoint.pth "HTTP/1.1 302 Found"
+2026-04-05 22:35:16 | INFO | root | TTSService initialized with device: cuda, sample_rate: 44100, speaker_ids: {'KR': 0}
+2026-04-05 22:35:16 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-medium/revision/main "HTTP/1.1 200 OK"
+2026-04-05 22:35:19 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:35:19 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/config.json "HTTP/1.1 200 OK"
+2026-04-05 22:35:20 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-04-05 22:35:20 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/model.safetensors.index.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:35:20 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/model.safetensors.index.json "HTTP/1.1 200 OK"
+2026-04-05 22:35:21 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/revision/main "HTTP/1.1 200 OK"
+2026-04-05 22:35:29 | INFO | root | Initializing services...
+2026-04-05 22:35:29 | INFO | root | Initializing TTSService...
+2026-04-05 22:35:29 | INFO | root | CUDA is available. Using GPU for TTS.
+2026-04-05 22:35:29 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-Korean/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:35:29 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/myshell-ai/MeloTTS-Korean/0207e5adfc90129a51b6b03d89be6d84360ed323/config.json "HTTP/1.1 200 OK"
+2026-04-05 22:35:30 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-Korean/resolve/main/checkpoint.pth "HTTP/1.1 302 Found"
+2026-04-05 22:35:30 | INFO | root | TTSService initialized with device: cuda, sample_rate: 44100, speaker_ids: {'KR': 0}
+2026-04-05 22:35:30 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-medium/revision/main "HTTP/1.1 200 OK"
+2026-04-05 22:35:33 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:35:33 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/config.json "HTTP/1.1 200 OK"
+2026-04-05 22:35:34 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-04-05 22:35:34 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/model.safetensors.index.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:35:34 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/model.safetensors.index.json "HTTP/1.1 200 OK"
+2026-04-05 22:35:35 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/revision/main "HTTP/1.1 200 OK"
+2026-04-05 22:38:12 | INFO | root | Initializing services...
+2026-04-05 22:38:12 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:38:12 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/config.json "HTTP/1.1 200 OK"
+2026-04-05 22:38:13 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-04-05 22:38:14 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/model.safetensors.index.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:38:14 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/model.safetensors.index.json "HTTP/1.1 200 OK"
+2026-04-05 22:38:14 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/revision/main "HTTP/1.1 200 OK"
+2026-04-05 22:38:28 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:38:28 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/generation_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:38:28 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/processor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:38:28 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/processor_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:38:29 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-05 22:38:29 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/processor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:38:29 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/processor_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:38:29 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/chat_template.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:38:29 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/chat_template.json "HTTP/1.1 200 OK"
+2026-04-05 22:38:29 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-04-05 22:38:30 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/audio_tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-04-05 22:38:30 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-05 22:38:30 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/processor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:38:30 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/processor_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:38:30 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/chat_template.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:38:30 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/chat_template.json "HTTP/1.1 200 OK"
+2026-04-05 22:38:30 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-04-05 22:38:31 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/audio_tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-04-05 22:38:31 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/processor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:38:31 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/processor_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:38:31 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:38:31 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:38:31 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/processor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:38:31 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/processor_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:38:32 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:38:32 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:38:32 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:38:32 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/config.json "HTTP/1.1 200 OK"
+2026-04-05 22:38:32 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:38:32 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:38:32 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-05 22:38:33 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-05 22:38:35 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning "HTTP/1.1 200 OK"
+2026-04-05 22:38:35 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-medium/revision/main "HTTP/1.1 200 OK"
+2026-04-05 22:38:37 | INFO | root | Initializing TTSService...
+2026-04-05 22:38:37 | INFO | root | CUDA is available. Using GPU for TTS.
+2026-04-05 22:38:37 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-Korean/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:38:37 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/myshell-ai/MeloTTS-Korean/0207e5adfc90129a51b6b03d89be6d84360ed323/config.json "HTTP/1.1 200 OK"
+2026-04-05 22:38:38 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-Korean/resolve/main/checkpoint.pth "HTTP/1.1 302 Found"
+2026-04-05 22:38:38 | INFO | root | TTSService initialized with device: cuda, sample_rate: 44100, speaker_ids: {'KR': 0}
+2026-04-05 22:38:38 | INFO | root | Services initialized successfully.
+2026-04-05 22:43:24 | INFO | root | Initializing services...
+2026-04-05 22:43:25 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:43:25 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/config.json "HTTP/1.1 200 OK"
+2026-04-05 22:43:26 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-04-05 22:43:26 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/model.safetensors.index.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:43:26 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/model.safetensors.index.json "HTTP/1.1 200 OK"
+2026-04-05 22:43:27 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/revision/main "HTTP/1.1 200 OK"
+2026-04-05 22:43:40 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:43:40 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/generation_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:43:40 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/processor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:43:40 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/processor_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:43:41 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-05 22:43:41 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/processor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:43:41 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/processor_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:43:41 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/chat_template.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:43:41 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/chat_template.json "HTTP/1.1 200 OK"
+2026-04-05 22:43:42 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-04-05 22:43:42 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/audio_tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-04-05 22:43:43 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-05 22:43:43 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/processor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:43:43 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/processor_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:43:43 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/chat_template.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:43:43 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/chat_template.json "HTTP/1.1 200 OK"
+2026-04-05 22:43:43 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-04-05 22:43:44 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/audio_tokenizer_config.json "HTTP/1.1 404 Not Found"
+2026-04-05 22:43:44 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/processor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:43:44 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/processor_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:43:44 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:43:44 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:43:44 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/processor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:43:44 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/processor_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:43:45 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/preprocessor_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:43:45 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/preprocessor_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:43:45 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:43:45 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/config.json "HTTP/1.1 200 OK"
+2026-04-05 22:43:45 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:43:45 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/ecce02f12adbc8195f684ad53ed9a47af6b24131/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:43:45 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-05 22:43:46 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-05 22:43:47 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/DimensionSTP/gemma-3-12b-it-Ko-Reasoning "HTTP/1.1 200 OK"
+2026-04-05 22:43:48 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-medium/revision/main "HTTP/1.1 200 OK"
+2026-04-05 22:43:50 | INFO | root | Initializing TTSService...
+2026-04-05 22:43:50 | INFO | root | CUDA is available. Using GPU for TTS.
+2026-04-05 22:43:50 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-Korean/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:43:50 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/myshell-ai/MeloTTS-Korean/0207e5adfc90129a51b6b03d89be6d84360ed323/config.json "HTTP/1.1 200 OK"
+2026-04-05 22:43:50 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/myshell-ai/MeloTTS-Korean/resolve/main/checkpoint.pth "HTTP/1.1 302 Found"
+2026-04-05 22:43:51 | INFO | root | TTSService initialized with device: cuda, sample_rate: 44100, speaker_ids: {'KR': 0}
+2026-04-05 22:43:51 | INFO | root | Services initialized successfully.
+2026-04-05 22:45:36 | INFO | root | Received Chat request.
+2026-04-05 22:45:36 | INFO | faster_whisper | Processing audio with duration 00:02.460
+2026-04-05 22:45:37 | INFO | faster_whisper | Detected language 'ko' with probability 0.99
+2026-04-05 22:45:37 | INFO | root | Chat STT completed in 1404.05 ms
+2026-04-05 22:45:41 | INFO | root | Chat LLM completed in 3549.92 ms
+2026-04-05 22:45:41 | INFO | root | Converting text to speech: 안녕하세요! 저는 맥도날드 키오스크입니다. 무엇을 도와드릴까요? 😊
+
+2026-04-05 22:45:42 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-04-05 22:45:42 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:45:42 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:45:43 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-05 22:45:43 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:45:43 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/google-bert/bert-base-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-05 22:45:43 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:45:43 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/config.json "HTTP/1.1 200 OK"
+2026-04-05 22:45:44 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/dccuchile/bert-base-spanish-wwm-uncased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:45:44 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dccuchile/bert-base-spanish-wwm-uncased/d1c9c4565c9d6731e57ed7f027b802697bad861e/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:45:44 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-05 22:45:44 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/dccuchile/bert-base-spanish-wwm-uncased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-05 22:45:44 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:45:44 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/config.json "HTTP/1.1 200 OK"
+2026-04-05 22:45:44 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/dbmdz/bert-base-french-europeana-cased/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:45:44 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/dbmdz/bert-base-french-europeana-cased/b895c3cf291f7bf4c15639078a6bee0b3e272c5b/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:45:45 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-05 22:45:45 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/dbmdz/bert-base-french-europeana-cased/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-05 22:45:45 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:45:45 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/config.json "HTTP/1.1 200 OK"
+2026-04-05 22:45:46 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-04-05 22:45:46 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base "HTTP/1.1 200 OK"
+2026-04-05 22:45:46 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/commits/main "HTTP/1.1 200 OK"
+2026-04-05 22:45:46 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/discussions?p=0 "HTTP/1.1 200 OK"
+2026-04-05 22:45:46 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:45:46 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/config.json "HTTP/1.1 200 OK"
+2026-04-05 22:45:46 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/commits/refs%2Fpr%2F1 "HTTP/1.1 200 OK"
+2026-04-05 22:45:47 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-04-05 22:45:47 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/kykim/bert-kor-base/1779cc0982ada0216dd6de0dd4e86fb78201926d/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-04-05 22:45:47 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/refs%2Fpr%2F1/model.safetensors.index.json "HTTP/1.1 404 Not Found"
+2026-04-05 22:45:47 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-04-05 22:45:47 | INFO | httpx | HTTP Request: HEAD https://huggingface.co/kykim/bert-kor-base/resolve/refs%2Fpr%2F1/model.safetensors "HTTP/1.1 302 Found"
+2026-04-05 22:45:47 | INFO | httpx | HTTP Request: GET https://huggingface.co/api/models/kykim/bert-kor-base/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-04-05 22:45:48 | INFO | root | Text to speech conversion completed.
+2026-04-05 22:45:48 | INFO | root | Chat pipeline completed in 12297.33 ms (stt=1404.05 ms, llm=3549.92 ms, tts=7336.35 ms, user_chars=10, answer_chars=38)
+2026-04-05 22:46:00 | INFO | root | Received Chat request.
+2026-04-05 22:46:00 | INFO | faster_whisper | Processing audio with duration 00:02.040
+2026-04-05 22:46:01 | INFO | faster_whisper | Detected language 'ko' with probability 0.99
+2026-04-05 22:46:01 | INFO | root | Chat STT completed in 961.24 ms
+2026-04-05 22:46:08 | INFO | root | Chat LLM completed in 6717.19 ms
+2026-04-05 22:46:08 | INFO | root | Converting text to speech: 죄송합니다, 저는 날씨를 알지 못합니다. 하지만 맛있는 햄버거를 주문하는 것을 도와드릴 수 있습니다! 무엇을 드릴까요? 😊
+
+2026-04-05 22:46:09 | INFO | root | Text to speech conversion completed.
+2026-04-05 22:46:09 | INFO | root | Chat pipeline completed in 9212.97 ms (stt=961.24 ms, llm=6717.19 ms, tts=1532.20 ms, user_chars=10, answer_chars=69)

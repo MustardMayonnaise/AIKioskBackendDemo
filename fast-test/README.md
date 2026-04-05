@@ -104,6 +104,28 @@ curl -X POST -F "audio_file=@audio.webm" http://localhost:8000/stt
 
 ---
 
+### POST /chat
+
+음성 파일을 받아 STT -> LLM -> TTS 파이프라인을 수행한 뒤, 응답 음성을 `audio/wav` 스트림으로 반환합니다.
+
+```bash
+curl -X POST -F "audio_file=@audio.webm" http://localhost:8000/chat --output chat_reply.wav
+```
+
+**파라미터:**
+- `audio_file` (file): 사용자 음성 파일 (multipart/form-data)
+
+**서버 처리 순서:**
+- `STT`: 업로드 음성을 텍스트로 변환
+- `LLM`: `agent.md + menu.md` 시스템 역할과 함께 답변 생성
+- `TTS`: 생성된 답변 텍스트를 음성으로 변환
+
+**응답:**
+- Content-Type: `audio/wav`
+- 바이너리 오디오 스트림
+
+---
+
 ## 파일 구조
 
 ```

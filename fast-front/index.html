@@ -63,6 +63,38 @@
       </section>
 
       <section class="card reveal delay-3">
+        <h2>LLM: 텍스트 질의 → 답변</h2>
+
+        <label for="llmInput">질문 텍스트</label>
+        <textarea id="llmInput" rows="4" placeholder="LLM에 보낼 질문을 입력하세요."></textarea>
+
+        <div class="row controls">
+          <button id="askLlmButton" type="button">LLM 질의</button>
+        </div>
+
+        <label for="llmResult">LLM 답변</label>
+        <textarea id="llmResult" rows="6" readonly placeholder="여기에 LLM 응답이 표시됩니다."></textarea>
+      </section>
+
+      <section class="card reveal delay-3">
+        <h2>Chat: 마이크/업로드 → 음성 응답</h2>
+
+        <div class="row controls">
+          <button id="startChatRecordButton" type="button">Chat 녹음 시작</button>
+          <button id="stopChatRecordButton" type="button" disabled>Chat 녹음 중지</button>
+          <button id="sendChatRecordButton" type="button" disabled>Chat 녹음 전송</button>
+        </div>
+
+        <div class="row">
+          <label for="chatAudioFileInput" class="file-label">오디오 업로드</label>
+          <input id="chatAudioFileInput" type="file" accept="audio/*" />
+          <button id="sendChatFileButton" type="button" disabled>Chat 전송</button>
+        </div>
+
+        <audio id="chatAudioPreview" controls></audio>
+      </section>
+
+      <section class="card reveal delay-3">
         <h2>상태</h2>
         <p id="statusText">대기 중</p>
         <p class="hint">fetch는 기본적으로 타임아웃이 없어 CPU 환경에서 오래 걸려도 완료까지 대기합니다.</p>
