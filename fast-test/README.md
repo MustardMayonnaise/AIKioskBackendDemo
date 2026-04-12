@@ -1,35 +1,62 @@
 # fast-test
 
-FastAPI 기반의 STT(음성인식)와 TTS(음성합성) 백엔드 서버입니다.
+FastAPI 기반 STT/LLM/TTS 백엔드 서버입니다.
 
 ## 주요 기능
 
-- **STT (Speech-to-Text)**: Faster Whisper를 사용한 고속 음성인식
-- **TTS (Text-to-Speech)**: MELO를 사용한 한국어 음성합성
-- **CORS 지원**: 웹 프론트엔드와의 크로스 오리진 통신 가능
-- **자동 디바이스 선택**: CUDA → MPS → CPU 자동 선택
+- STT (Speech-to-Text): `faster-whisper` 기반 한국어 음성 인식
+- LLM: Gemma 3 양자화 모델 기반 답변 생성
+- TTS (Text-to-Speech): `OmniVoice` 기반 한국어 음성 합성
+- Chat 파이프라인: `STT -> LLM -> TTS`를 하나의 API로 제공
+- 구조화된 에러 응답: HTTP 상태코드 + 도메인 에러코드 반환
 
 ## 필수 요구사항
 
 - Python 3.10 이상
 - pip 또는 conda
-- 4GB 이상의 메모리 (모델 로딩)
-- CUDA 지원 GPU (가속)
-- 저장 공간 2GB 이상 필요 (모델 저장)
+- CUDA GPU 권장 (CPU 동작 가능하나 매우 느릴 수 있음)
+- 충분한 디스크/메모리 (모델 다운로드 및 로딩)
 
 ## 설치
 
 ### 1. 가상 환경 생성
 
 ```bash
-conda create -n fast-test python=3.10
+conda create -n fast-test python=3.10 -y
 conda activate fast-test
 ```
 
-### 2. 의존성 설치
+### 2. PyTorch 설치
 
-- 메인 참조
+CUDA 환경 예시:
 
+```bash
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu130
+```
+
+CPU 환경 예시:
+
+```bash
+pip install torch torchvision torchaudio
+```
+
+### 3. 백엔드 의존성 설치
+
+아래 패키지는 현재 코드 import 기준으로 확인된 설치 대상입니다.
+
+```bash
+pip install fastapi uvicorn python-multipart
+pip install faster-whisper transformers accelerate bitsandbytes
+pip install omnivoice numpy soundfile
+```
+
+옵션(환경에 따라 필요):
+
+```bash
+# 음성 디코딩 이슈가 있으면 ffmpeg 설치
+# Windows: winget install Gyan.FFmpeg
+# macOS: brew install ffmpeg
+```
 
 ## 실행
 
@@ -40,14 +67,6 @@ python main.py
 ```
 
 기본 포트: `http://localhost:8000`
-
-### 커스텀 포트 지정
-
-```bash
-# main.py 마지막 줄 수정 후 실행
-# uvicorn.run(app, host="0.0.0.0", port=8000)
-# 위 줄의 port를 원하는 포트로 변경
-```
 
 ### 개발 모드 실행 (Hot-reload)
 
@@ -63,78 +82,99 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 ```bash
 curl http://localhost:8000/
-# 응답: {"Hello": "World"}
 ```
----
 
-### GET /tts $${\color{red}(현재\space오류가\space있습니다.)}$$
+예시 응답:
 
-텍스트를 음성으로 변환합니다.
+```json
+{"Hello": "World"}
+```
+
+### GET /tts
+
+텍스트를 음성으로 변환해 `audio/wav`로 반환합니다.
 
 ```bash
 curl "http://localhost:8000/tts?text=안녕하세요" --output output.wav
 ```
 
-**파라미터:**
-- `text` (string): 음성으로 변환할 텍스트 (URL 인코딩 필수)
+파라미터:
 
-**응답:**
-- Content-Type: `audio/wav`
-- 바이너리 오디오 데이터
-
----
+- `text` (string): 음성으로 변환할 텍스트
 
 ### POST /stt
 
-음성 파일을 텍스트로 변환합니다.
+업로드한 음성 파일을 텍스트로 변환합니다.
 
 ```bash
 curl -X POST -F "audio_file=@audio.webm" http://localhost:8000/stt
-# 응답: {"text": "인식된 텍스트"}
 ```
 
-**파라미터:**
-- `audio_file` (file): 음성 파일 (multipart/form-data)
+예시 응답:
 
-**지원하는 형식:**
-- WebM, MP3, WAV, OGG, FLAC 등
+```json
+{"text": "인식된 텍스트"}
+```
 
-**응답:**
-- `{"text": "인식된 텍스트"}`
+### POST /llm
 
----
+텍스트 프롬프트를 받아 답변을 생성합니다.
+
+```bash
+curl -X POST "http://localhost:8000/llm?text=메뉴 추천해줘"
+```
+
+예시 응답:
+
+```json
+{"message": "추천 답변"}
+```
 
 ### POST /chat
 
-음성 파일을 받아 STT -> LLM -> TTS 파이프라인을 수행한 뒤, 응답 음성을 `audio/wav` 스트림으로 반환합니다.
+음성 파일을 받아 STT -> LLM -> TTS를 수행하고, 응답 음성을 `audio/wav` 스트림으로 반환합니다.
 
 ```bash
 curl -X POST -F "audio_file=@audio.webm" http://localhost:8000/chat --output chat_reply.wav
 ```
 
-**파라미터:**
-- `audio_file` (file): 사용자 음성 파일 (multipart/form-data)
+## 에러 응답 규격
 
-**서버 처리 순서:**
-- `STT`: 업로드 음성을 텍스트로 변환
-- `LLM`: `agent.md + menu.md` 시스템 역할과 함께 답변 생성
-- `TTS`: 생성된 답변 텍스트를 음성으로 변환
+서비스 오류는 아래 형태로 반환됩니다.
 
-**응답:**
-- Content-Type: `audio/wav`
-- 바이너리 오디오 스트림
+```json
+{
+	"detail": {
+		"error": {
+			"code": "TTS-4221",
+			"message": "TTS waveform is empty",
+			"details": {
+				"reason": "..."
+			}
+		}
+	}
+}
+```
 
----
+대표 에러 코드:
+
+- STT: `STT-4001`, `STT-4221`, `STT-5001`, `STT-5002`
+- TTS: `TTS-4001`, `TTS-4221`, `TTS-5001`, `TTS-5002`, `TTS-5021`, `TTS-5022`
+- 공통: `COMMON-5000`
 
 ## 파일 구조
 
-```
+```text
 fast-test/
-├── main.py              # FastAPI 메인 서버 파일
-├── services/            # 서비스 구현
-│   ├── stt_service.py   # Faster Whisper STT 서비스
-│   └── tts_service.py   # MELO TTS 서비스
-├── models/              # (예약됨) 커스텀 모델
-├── core/                # (예약됨) 공통 로직
-└── README.md            # 이 파일
+├── main.py
+├── core/
+│   ├── errors.py
+│   └── log_config.py
+├── services/
+│   ├── stt_service.py
+│   ├── tts_service.py
+│   └── llm_service.py
+├── markdown/
+│   └── agent.md
+└── README.md
 ```

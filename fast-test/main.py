@@ -13,6 +13,8 @@ import uvicorn
 import logging
 import time
 
+from core.errors import ErrorCode, ServiceError, STTServiceError, TTSServiceError
+
 
 app = FastAPI()
 app.add_middleware(
@@ -27,9 +29,9 @@ def main(stt_model_dir: str, host: str = "0.0.0.0", port: int = 8000):
     setup_logging()
     global stt_service, tts_service, chatbot, app
     logging.info("Initializing services...")
-    stt_service = STTService()
     chatbot = LLMService()
     chatbot.load_gemma_quant()
+    stt_service = STTService()
     tts_service = TTSService()    
     uvicorn.run(app, host=host, port=port)
     logging.info("Services initialized successfully.")
@@ -57,6 +59,22 @@ def iter_audio_chunks(audio_data: bytes, chunk_size: int = 4096) -> Iterator[byt
         yield audio_data[i:i + chunk_size]
 
 
+def to_http_exception(exc: ServiceError) -> HTTPException:
+    return HTTPException(status_code=exc.http_status, detail={"error": exc.to_dict()})
+
+
+def common_http_exception(exc: Exception) -> HTTPException:
+    return HTTPException(
+        status_code=500,
+        detail={
+            "error": {
+                "code": ErrorCode.COMMON_INTERNAL_ERROR.value,
+                "message": str(exc),
+            }
+        },
+    )
+
+
 @app.get("/")
 def read_root():
     logging.info("Received request at root endpoint.")
@@ -73,10 +91,14 @@ def get_tts(text: str):
             media_type="audio/wav",
             headers={"Content-Disposition": "inline; filename=tts.wav"}
         )
+    except TTSServiceError as exc:
+        elapsed_ms = (time.perf_counter() - request_start) * 1000
+        logging.exception("TTS domain error after %.2f ms (chars=%d)", elapsed_ms, len(text))
+        raise to_http_exception(exc) from exc
     except Exception as exc:
         elapsed_ms = (time.perf_counter() - request_start) * 1000
         logging.exception("TTS request failed after %.2f ms (chars=%d)", elapsed_ms, len(text))
-        raise HTTPException(status_code=500, detail=f"TTS failed: {exc}") from exc
+        raise common_http_exception(exc) from exc
 
 @app.post("/stt")
 def post_stt(audio_file: UploadFile):
@@ -90,9 +112,12 @@ def post_stt(audio_file: UploadFile):
         text = stt_service.speech_to_text(temp_path)
         logging.info("Speech to text conversion completed. Extracted text: %s", text)
         return {"text": text}
+    except STTServiceError as exc:
+        logging.exception("STT domain error.")
+        raise to_http_exception(exc) from exc
     except Exception as exc:
         logging.exception("STT failed.")
-        raise HTTPException(status_code=400, detail=f"STT decode/transcribe failed: {exc}") from exc
+        raise common_http_exception(exc) from exc
     finally:
         try:
             os.remove(temp_path)
@@ -174,6 +199,15 @@ def post_chat(audio_file: UploadFile):
         )
 
         return StreamingResponse(iter_audio_chunks(wav_bytes), media_type="audio/wav")
+    except STTServiceError as exc:
+        logging.exception("Chat STT domain error.")
+        raise to_http_exception(exc) from exc
+    except TTSServiceError as exc:
+        logging.exception("Chat TTS domain error.")
+        raise to_http_exception(exc) from exc
+    except Exception as exc:
+        logging.exception("Chat pipeline failed.")
+        raise common_http_exception(exc) from exc
     finally:
         try:
             os.remove(temp_path)
