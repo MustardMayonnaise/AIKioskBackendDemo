@@ -1,0 +1,126 @@
+=======================================================================================
+
+상황 설명: Rewrite prompt 후 출력 값을 키오스크 프롬프트에 전달, 결과를 tts로 전송합니다.
+아래 로그는 그 과정에 대한 로그입니다.
+
+[rewrite_prompt]
+Rewrite the STT text into the most likely natural Korean sentence.
+Rules:
+- Fix only obvious STT errors.
+- Preserve the original intent and tone.
+- Do not reinterpret the sentence as an order.
+- Do not answer, summarize, or add missing information.
+- Output only one corrected Korean sentence.
+- If too unclear, output only: UNCLEAR
+
+[kiosk_prompt]
+You are a Subway kiosk assistant.
+Answer the user's questions based on the menu and your role.
+Rules:
+- Reply in Korean only.
+- Output plain text only.
+- Output only one spoken sentence for TTS.
+- No labels, emojis, markdown, quotes, or bullet points.
+- Keep it natural, polite, and concise.
+- Do not mention items not found in the menu database.
+- If the menu match is invalid, say the item is unavailable and guide the user briefly.
+
+=======================================================================================
+
+
+
+2026-04-06 21:46:15 | INFO | root | Extracted STT user text (chars=8): 야 너 누구냐고
+2026-04-06 21:46:15 | INFO | root | Chat STT completed in 1217.32 ms
+2026-04-06 21:46:17 | INFO | root | Rewritten user text (chars=10): 야, 너 누구야?
+
+2026-04-06 21:46:19 | INFO | root | Chat LLM completed in 3774.27 ms
+2026-04-06 21:46:19 | INFO | root | Converting text to speech: 안녕하세요, 무엇을 도와드릴까요?
+
+2026-04-06 21:46:19 | INFO | root | Text to speech conversion completed.
+2026-04-06 21:46:19 | INFO | root | Chat pipeline completed in 5372.51 ms (stt=1217.32 ms, llm=3774.27 ms, tts=378.07 ms, user_chars=8, answer_chars=19)
+2026-04-06 21:46:28 | INFO | root | Received Chat request.
+2026-04-06 21:46:29 | INFO | faster_whisper | Processing audio with duration 00:03.180
+2026-04-06 21:46:29 | INFO | faster_whisper | Detected language 'ko' with probability 0.99
+2026-04-06 21:46:29 | INFO | root | Extracted STT user text (chars=12): 너 누구냐고 질문했잖아
+2026-04-06 21:46:29 | INFO | root | Chat STT completed in 948.64 ms
+2026-04-06 21:46:32 | INFO | root | Rewritten user text (chars=14): 너 누구냐고 물어봤잖아.
+
+2026-04-06 21:46:34 | INFO | root | Chat LLM completed in 5352.35 ms
+2026-04-06 21:46:34 | INFO | root | Converting text to speech: 네, 고객님. 무엇을 도와드릴까요?
+
+2026-04-06 21:46:35 | INFO | root | Text to speech conversion completed.
+2026-04-06 21:46:35 | INFO | root | Chat pipeline completed in 6781.24 ms (stt=948.64 ms, llm=5352.35 ms, tts=477.31 ms, user_chars=12, answer_chars=20)
+
+2026-04-06 21:46:52 | INFO | root | Text to speech conversion completed.
+2026-04-06 21:46:52 | INFO | root | Chat pipeline completed in 9767.04 ms (stt=996.50 ms, llm=7486.76 ms, tts=1281.03 ms, user_chars=9, answer_chars=51)
+2026-04-06 21:47:07 | INFO | root | Received Chat request.
+2026-04-06 21:47:08 | INFO | faster_whisper | Processing audio with duration 00:01.440
+2026-04-06 21:47:08 | INFO | faster_whisper | Detected language 'ko' with probability 0.99
+2026-04-06 21:47:08 | INFO | root | Extracted STT user text (chars=9): 진짜 어이가 없네
+2026-04-06 21:47:08 | INFO | root | Chat STT completed in 1015.93 ms
+2026-04-06 21:47:10 | INFO | root | Rewritten user text (chars=11): 진짜 어이가 없네.
+
+2026-04-06 21:47:16 | INFO | root | Chat LLM completed in 7385.50 ms
+2026-04-06 21:47:16 | INFO | root | Converting text to speech: 죄송합니다, 그 메뉴 항목은 지금 저희 매장에서 제공되지 않습니다. 다른 것을 시도해 보시겠어요?
+
+2026-04-06 21:47:17 | INFO | root | Text to speech conversion completed.
+2026-04-06 21:47:17 | INFO | root | Chat pipeline completed in 9637.25 ms (stt=1015.93 ms, llm=7385.50 ms, tts=1233.07 ms, user_chars=9, answer_chars=55)
+2026-04-06 21:47:46 | INFO | root | Received Chat request.
+2026-04-06 21:47:46 | INFO | faster_whisper | Processing audio with duration 00:04.380
+2026-04-06 21:47:47 | INFO | faster_whisper | Detected language 'en' with probability 0.34
+2026-04-06 21:47:47 | INFO | root | Extracted STT user text (chars=20): Thanks for watching!
+2026-04-06 21:47:47 | INFO | root | Chat STT completed in 944.11 ms
+2026-04-06 21:47:48 | INFO | root | Rewritten user text (chars=7): 감사합니다!
+
+2026-04-06 21:47:51 | INFO | root | Chat LLM completed in 3780.69 ms
+2026-04-06 21:47:51 | INFO | root | Converting text to speech: 네, 무엇을 도와드릴까요?
+
+2026-04-06 21:47:51 | INFO | root | Text to speech conversion completed.
+2026-04-06 21:47:51 | INFO | root | Chat pipeline completed in 5090.45 ms (stt=944.11 ms, llm=3780.69 ms, tts=363.00 ms, user_chars=20, answer_chars=15)
+2026-04-06 21:47:57 | INFO | root | Received Chat request.
+2026-04-06 21:47:58 | INFO | faster_whisper | Processing audio with duration 00:01.920
+2026-04-06 21:47:58 | INFO | faster_whisper | Detected language 'ko' with probability 0.97
+2026-04-06 21:47:58 | INFO | root | Extracted STT user text (chars=7): 빅맥 하나 줘
+2026-04-06 21:47:58 | INFO | root | Chat STT completed in 937.74 ms
+2026-04-06 21:48:00 | INFO | root | Rewritten user text (chars=11): 빅맥 하나 주세요.
+
+2026-04-06 21:48:05 | INFO | root | Chat LLM completed in 6749.42 ms
+2026-04-06 21:48:05 | INFO | root | Converting text to speech: 죄송합니다, 저희 매장에서 빅맥은 제공하지 않습니다. 샌드위치나 사이드를 선택해 보시겠어요?
+
+2026-04-06 21:48:06 | INFO | root | Text to speech conversion completed.
+2026-04-06 21:48:06 | INFO | root | Chat pipeline completed in 8702.17 ms (stt=937.74 ms, llm=6749.42 ms, tts=1011.75 ms, user_chars=7, answer_chars=52)
+2026-04-06 21:48:19 | INFO | root | Received Chat request.
+2026-04-06 21:48:20 | INFO | faster_whisper | Processing audio with duration 00:05.340
+2026-04-06 21:48:20 | INFO | faster_whisper | Detected language 'ko' with probability 0.99
+2026-04-06 21:48:20 | INFO | root | Extracted STT user text (chars=32): 알겠어. 그럼 과트로 치즈 와퍼랑 샌드위치 클럽 하나 줘.
+2026-04-06 21:48:20 | INFO | root | Chat STT completed in 1149.35 ms
+2026-04-06 21:48:26 | INFO | root | Rewritten user text (chars=35): 알겠어. 그럼 콰트로 치즈 와퍼랑 샌드위치 클럽 하나 주세요.
+
+2026-04-06 21:48:31 | INFO | root | Chat LLM completed in 10444.37 ms
+2026-04-06 21:48:31 | INFO | root | Converting text to speech: 네, 콰트로 치즈 와퍼랑 샌드위치 클럽 하나 드릴게요.
+2026-04-06 21:48:31 | INFO | root | Text to speech conversion completed.
+2026-04-06 21:48:31 | INFO | root | Chat pipeline completed in 12339.16 ms (stt=1149.35 ms, llm=10444.37 ms, tts=742.59 ms, user_chars=32, answer_chars=30)
+2026-04-06 21:48:38 | INFO | root | Received Chat request.
+2026-04-06 21:48:38 | INFO | faster_whisper | Processing audio with duration 00:01.800
+2026-04-06 21:48:38 | INFO | faster_whisper | Detected language 'ko' with probability 1.00
+2026-04-06 21:48:38 | INFO | root | Extracted STT user text (chars=10): 그거 가격 얼마야?
+2026-04-06 21:48:38 | INFO | root | Chat STT completed in 907.04 ms
+2026-04-06 21:48:40 | INFO | root | Rewritten user text (chars=9): 그거 얼마예요?
+
+2026-04-06 21:48:44 | INFO | root | Chat LLM completed in 5615.17 ms
+2026-04-06 21:48:44 | INFO | root | Converting text to speech: 네, 6인치 썹은 7,500원입니다.
+
+2026-04-06 21:48:45 | INFO | root | Text to speech conversion completed.
+2026-04-06 21:48:45 | INFO | root | Chat pipeline completed in 7249.65 ms (stt=907.04 ms, llm=5615.17 ms, tts=724.71 ms, user_chars=10, answer_chars=21)
+2026-04-06 21:48:59 | INFO | root | Received Chat request.
+2026-04-06 21:49:00 | INFO | faster_whisper | Processing audio with duration 00:02.700
+2026-04-06 21:49:00 | INFO | faster_whisper | Detected language 'ko' with probability 1.00
+2026-04-06 21:49:00 | INFO | root | Extracted STT user text (chars=11): 계산해줘 카드 넣었어
+2026-04-06 21:49:00 | INFO | root | Chat STT completed in 995.48 ms
+2026-04-06 21:49:03 | INFO | root | Rewritten user text (chars=15): 계산해 줘, 카드 넣었어.
+
+2026-04-06 21:49:05 | INFO | root | Chat LLM completed in 5111.36 ms
+2026-04-06 21:49:05 | INFO | root | Converting text to speech: 네, 결제가 완료되었습니다. 감사합니다.
+
+2026-04-06 21:49:06 | INFO | root | Text to speech conversion completed.
+2026-04-06 21:49:06 | INFO | root | Chat pipeline completed in 6738.50 ms (stt=995.48 ms, llm=5111.36 ms, tts=628.59 ms, user_chars=11, answer_chars=23)

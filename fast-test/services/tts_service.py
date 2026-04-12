@@ -1,51 +1,60 @@
-from melo.api import TTS
-import io
-from typing import Any, Dict
-import numpy as np
-import soundfile as sf
+from omnivoice import OmniVoice
 import torch
+import numpy as np
+import io
+import wave
 import logging
+
+logging.basicConfig(level=logging.INFO)
 
 class TTSService:
     def __init__(self):
         logging.info("Initializing TTSService...")
-        if torch.cuda.is_available():
-            device = "cuda"
-            logging.info("CUDA is available. Using GPU for TTS.")
-        elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
-            device = "mps"
-            logging.info("MPS is available. Using Apple Silicon GPU for TTS.")
+        self.model = OmniVoice.from_pretrained(
+            "k2-fsa/OmniVoice",
+            device_map="cuda:0",
+            dtype=torch.float16
+        )
+
+    def _to_numpy_1d(self, audio_obj):
+        if isinstance(audio_obj, list):
+            if not audio_obj:
+                raise ValueError("TTS model returned an empty list.")
+            audio_obj = audio_obj[0]
+
+        if torch.is_tensor(audio_obj):
+            arr = audio_obj.detach().float().cpu().numpy()
+        elif isinstance(audio_obj, np.ndarray):
+            arr = audio_obj.astype(np.float32)
         else:
-            device = "cpu"
-            logging.info("No GPU available. Using CPU for TTS.")
+            raise TypeError(f"Unsupported audio type from TTS model: {type(audio_obj)}")
 
-        self.tts = TTS(language='KR', device=device)
-        hps: Any = getattr(self.tts, "hps", None)
-        data_cfg: Any = getattr(hps, "data", None)
+        if arr.ndim > 1:
+            arr = np.mean(arr, axis=-1)
 
-        spk2id = getattr(data_cfg, "spk2id", {})
-        self.speaker_ids: Dict[str, int] = dict(spk2id) if spk2id else {"KR": 0}
-        self.sample_rate = int(getattr(data_cfg, "sampling_rate", 24000))
-        logging.info(f"TTSService initialized with device: {device}, sample_rate: {self.sample_rate}, speaker_ids: {self.speaker_ids}")
-        
-        
+        return np.clip(arr, -1.0, 1.0).astype(np.float32)
+
     def text_to_speech(self, text: str) -> bytes:
-        logging.info(f"Converting text to speech: {text}")
-        speaker_id = self.speaker_ids.get("KR", next(iter(self.speaker_ids.values())))
-        tts_to_file_fn: Any = getattr(self.tts, "tts_to_file")
-        audio_data = tts_to_file_fn(text, speaker_id=speaker_id, output_path=None, speed=1.5, quiet=True)
+        logging.info("Converting text to speech: %s", text)
+        audio = self.model.generate(
+            preprocess_prompt="announcer, clear voice, high quality",
+            num_step=32,
+            speed=1.3,
+            language="Korean",
+            instruct="female, young adult, high pitch",
+            text=text
+        )
 
-        if isinstance(audio_data, tuple):
-            audio_data = audio_data[0]
+        waveform = self._to_numpy_1d(audio)
+        pcm16 = (waveform * 32767.0).astype(np.int16)
 
-        if isinstance(audio_data, torch.Tensor):
-            audio_data = audio_data.detach().cpu().numpy()
+        buf = io.BytesIO()
+        with wave.open(buf, "wb") as wf:
+            wf.setnchannels(1)
+            wf.setsampwidth(2)   # int16
+            wf.setframerate(24000)
+            wf.writeframes(pcm16.tobytes())
 
-        if not isinstance(audio_data, np.ndarray):
-            audio_data = np.asarray(audio_data, dtype=np.float32)
-
-        buffer = io.BytesIO()
-        sf.write(buffer, audio_data, self.sample_rate, format='WAV')
-        wav_bytes = buffer.getvalue()
-        logging.info("Text to speech conversion completed.")
+        wav_bytes = buf.getvalue()
+        logging.info("Text to speech conversion completed (bytes=%d)", len(wav_bytes))
         return wav_bytes
