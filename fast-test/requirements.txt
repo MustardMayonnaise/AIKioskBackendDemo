@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+python-multipart
+python-dotenv
+openai
+torch
+transformers
+accelerate
+bitsandbytes
+sentence-transformers
+faiss-cpu
+numpy
+pandas
+faster-whisper
+omnivoice
+soundfile

@@ -1,0 +1,52 @@
+{
+  "session_id": null,
+  "answer": null,
+  "current_step": "MENU_SELECT",
+  "active_order": {
+    "order_item_id": null,
+    "menu": {
+      "id": null,
+      "name": null
+    },
+    "size": null,
+    "bread": {
+      "id": null,
+      "name": null
+    },
+    "cheese": {
+      "id": null,
+      "name": null
+    },
+    "is_toasted": null,
+    "vegetables": [
+      {
+        "id": null,
+        "name": null
+      }
+    ],
+    "sauces": [
+      {
+        "id": null,
+        "name": null
+      }
+    ],
+    "side_menu_items": [
+      {
+        "id": null,
+        "name": null
+      }
+    ],
+    "extras": [
+      {
+        "id": null,
+        "name": null
+      }
+    ],
+    "quantity": 1,
+    "price": {
+      "base_price": null,
+      "extra_price": null,
+      "total_price": null
+    }
+  }
+}
